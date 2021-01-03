@@ -35,47 +35,27 @@ Button b1,b2;
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s1=e1.getText().toString();
-                String s2=e2.getText().toString();
-                String s3=e3.getText().toString();
-                if (s1.equals("")|| s2.equals("")||s3.equals("")){
+                String s1 = e1.getText().toString();
+                String s2 = e2.getText().toString();
+                String s3 = e3.getText().toString();
+                if (s1.equals("") || s2.equals("") || s3.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
-
-
-                }
-                else{
-                    if (s2.equals(s3)){
+                } else {
+                    if (s2.equals(s3)) {
                         Boolean checkemail = db.chekemail(s1);
-                        if (checkemail==true){
-                            Boolean insert = db.insert(s1,s2);
-                            if (insert==true){
-                                Toast.makeText(getApplicationContext(),"Fields are empty",Toast.LENGTH_SHORT).show();
-
+                        if (checkemail == true) {
+                            boolean insert = db.insert(s1,s2);
+                            if(insert == true) {
+                                Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
                             }
-                            else {
-                                if (s2.equals(s3)){
-                                    Boolean chekamil = db.chekemail(s1);
-                                    if (checkemail==true){
-                                        Toast.makeText(getApplicationContext(),"Register Successfully",Toast.LENGTH_SHORT).show();
-
-                                    }
-                                }
-                                else
-                                {
-                                    Toast.makeText(getApplicationContext(),"Email Already  existes",Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            Toast.makeText(getApplicationContext(),"Password do not match",Toast.LENGTH_SHORT).show();
-
-
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Email Already  existes", Toast.LENGTH_SHORT).show();
                         }
-
-
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Password do not match", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
-
-
     }
 }

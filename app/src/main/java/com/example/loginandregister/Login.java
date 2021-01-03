@@ -17,27 +17,24 @@ DatabaseHelper db;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         db= new DatabaseHelper(this);
-        e1= (EditText)findViewById(R.id.editText2);
+        e1= (EditText)findViewById(R.id.editText);
+        e2=(EditText)findViewById(R.id.editText2);
         b1= (Button)findViewById(R.id.button);
 
-b1.setOnClickListener(new View.OnClickListener() {
-    private boolean Chekemailpass;
-
-    @Override
-    public void onClick(View v) {
-        String email =e1.getText().toString();
-        String password = e2.getText().toString();
-        Boolean Chekemail= db.emailpasswod(email,password);
-       if (Chekemailpass== true)
-           Toast.makeText(getApplicationContext(),"seccessfully login",Toast.LENGTH_SHORT);
-
-       else
-           Toast.makeText(getApplicationContext(),"wrong email or password ",Toast.LENGTH_SHORT);
-
-
-    }
-});
-
-
-    }
+    b1.setOnClickListener(new View.OnClickListener() {
+        private boolean Chekemailpass;
+        @Override
+        public void onClick(View v) {
+            String email =e1.getText().toString();
+            String password = e2.getText().toString();
+            Boolean Chekemail= db.emailpasswod(email,password);
+           if (Chekemail == true){
+               Toast.makeText(getApplicationContext(),"seccessfully login",Toast.LENGTH_SHORT).show();
+           }
+           else {
+               Toast.makeText(getApplicationContext(), "wrong email or password ", Toast.LENGTH_SHORT).show();
+           }
+        }
+    });
+        }
 }
